@@ -1,73 +1,28 @@
-# ============================================================
-# AI Financial Analysis & Investment Pipeline
-# requirements.txt
-# Python 3.11+ recommended
-# Install: pip install -r requirements.txt
-# ============================================================
-
-# ── Core Data & HTTP ─────────────────────────────────────────
-requests==2.32.3            # HTTP client for SEC EDGAR, FRED, NewsAPI
-httpx==0.28.1               # Async HTTP (used in later agent steps)
-python-dotenv==1.0.1        # Load .env API keys
-
-# ── Stock & Financial Data ───────────────────────────────────
-yfinance==0.2.61            # Yahoo Finance: price history, financials, ratios
-finnhub-python==2.4.20      # Finnhub: real-time quotes, news, fundamentals, SEC
-pandas==2.2.3               # DataFrames for price history & financial statements
-numpy==1.26.4               # Numerical ops (keep <2.0 for compatibility)
-
-# ── SEC Filing Parsing ───────────────────────────────────────
-beautifulsoup4==4.12.3      # Parse HTML/HTM SEC filing documents
-lxml==5.3.0                 # Fast HTML parser backend for BeautifulSoup
-sec-edgar-downloader==5.0.2 # Helper to download SEC filings by ticker
-
-# ── News ─────────────────────────────────────────────────────
-newsapi-python==0.2.7       # NewsAPI.org client
-
-# ── Text & NLP Utilities ─────────────────────────────────────
-nltk==3.9.1                 # Text utilities (tokenize, stopwords)
-tiktoken==0.9.0             # Token counting (for chunking in Step 2)
-
-# ── GraphRAG & Vector Store (Step 2 — install now) ───────────
-langchain==0.3.25           # LangChain core (orchestration backbone)
-langchain-community==0.3.24 # Community integrations (loaders, vectorstores)
-langchain-anthropic==0.3.15 # LangChain × Claude / Anthropic SDK
-langchain-openai==0.3.16    # LangChain × OpenAI (embeddings fallback)
-langgraph==0.4.8            # Multi-agent orchestration (Step 7)
-chromadb==0.6.3             # Local vector database for RAG
-sentence-transformers==3.4.1 # Local embeddings (free, no API cost)
-
-# ── Graph Database (GraphRAG — Step 2) ───────────────────────
-neo4j==5.27.0               # Neo4j Python driver (for knowledge graph)
-networkx==3.4.2             # Lightweight graph library (local dev fallback)
-
-# ── LLM & AI ─────────────────────────────────────────────────
-anthropic==0.52.0           # Anthropic Claude SDK (primary LLM)
-openai==1.77.0              # OpenAI SDK (embeddings / fallback)
-
-# ── Evaluation (Step 8) ──────────────────────────────────────
-ragas==0.2.15               # RAG quality evaluation framework
-
-# ── Frontend (Step 8) ────────────────────────────────────────
-streamlit==1.45.1           # Web UI for the investment memo dashboard
-plotly==5.24.1              # Interactive charts (price history, radar charts)
-
-# ── Data Storage & Serialisation ─────────────────────────────
-pydantic==2.11.4            # Data validation & schema models
-python-dateutil==2.9.0      # Flexible date parsing
-pytz==2025.2                # Timezone handling
-
-# ── Dev & Debugging ──────────────────────────────────────────
-rich==13.9.4                # Beautiful terminal output (progress, tables)
-tqdm==4.67.1                # Progress bars for long ingestion loops
-loguru==0.7.3               # Better logging (used in utils.py)
-pytest==8.3.5               # Unit testing
-pytest-asyncio==0.25.3      # Async test support
-python-dotenv==1.0.1        # Already listed above, included for clarity
-
-reportlab==4.0.4           # PDF generation for investment memos
-streamlit
+streamlit==1.45.1
 plotly==5.24.1
-# ── Optional: Jupyter for exploration ────────────────────────
-# jupyter==1.1.1
-# ipykernel==6.29.5
+pandas==2.2.3
+numpy==1.26.4
+yfinance==0.2.61
+finnhub-python==2.4.20
+newsapi-python==0.2.7
+requests==2.32.3
+python-dotenv==1.0.1
+anthropic==0.52.0
+openai==1.77.0
+langchain==0.3.25
+langchain-community==0.3.24
+langchain-anthropic==0.3.15
+langgraph==0.4.8
+chromadb==0.6.3
+sentence-transformers==3.4.1
+networkx==3.4.2
+reportlab==4.5.1
+sec-edgar-downloader==5.0.2
+beautifulsoup4==4.12.3
+lxml==5.3.0
+tiktoken==0.9.0
+nltk==3.9.1
+rich==13.9.4
+tqdm==4.67.1
+loguru==0.7.3
+pydantic==2.11.4
