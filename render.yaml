@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: finance-agent
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run streamlit_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    envVars:
+      - key: FINNHUB_API_KEY
+        sync: false
+      - key: NEWSAPI_KEY
+        sync: false
+      - key: FRED_API_KEY
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        sync: false
+      - key: OPENROUTER_BASE_URL
+        sync: false
+      - key: SEC_USER_AGENT
+        sync: false
+    disk:
+      name: pipeline-data
+      mountPath: /data
+      sizeGB: 1

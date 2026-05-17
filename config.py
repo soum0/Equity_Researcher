@@ -27,7 +27,8 @@ class Config:
     NEWS_LOOKBACK_DAYS = int(os.getenv("NEWS_LOOKBACK_DAYS", 30))
     MAX_SEC_FILINGS = int(os.getenv("MAX_SEC_FILINGS", 3))
     PRICE_HISTORY_PERIOD = "2y"
-    DATA_DIR = "data"
+    # On Render, /data is the persistent disk mount path; locally use data/
+    DATA_DIR = "/data" if os.path.exists("/data") else "data"
 
     # FRED series to fetch
     FRED_SERIES = {
@@ -58,8 +59,8 @@ class Config:
     MIN_CHUNK_TOKENS = 100
     EMBEDDING_MODEL = "all-MiniLM-L6-v2"
     # Template strings — format with ticker at runtime
-    CHROMA_DB_DIR = "data/{ticker}/graphrag/chroma"
-    GRAPH_FILE = "data/{ticker}/graphrag/graph.pkl"
+    CHROMA_DB_DIR = DATA_DIR + "/{ticker}/graphrag/chroma"
+    GRAPH_FILE    = DATA_DIR + "/{ticker}/graphrag/graph.pkl"
 
     EXTRACTION_MODEL = _get("OPENROUTER_MODEL", "meta-llama/llama-3.3-70b-instruct")
     EXTRACTION_BATCH_SIZE = 3
